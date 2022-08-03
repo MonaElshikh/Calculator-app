@@ -1,0 +1,190 @@
+
+/************************** Start Globals ******************************/
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+:root {
+    --main-bg-color:hsl(222, 26%, 31%);
+    --screen-bg-color:hsl(224, 35%, 15%);
+    --keybad-bg-color:hsl(223, 31%, 20%);
+    --num-bg-color:hsl(35,29%,88%);
+    --num-hover-color:hsl(100,100%,100%);
+    --num-shadow-bg-color:hsl(24,15%,65%);
+    --key-color:hsl(100,100%,100%);
+    --key-bg-color:hsl(225, 21%, 49%);
+    --key-hover-color:hsl(244,51%,76%);
+    --key-shadow-bg-color:hsl(224, 28%, 35%);
+    --red-key-bg-color:hsl(6, 63%, 50%);
+    --red-key-hover-color:hsl(6,93%,67%);
+    --red-key-shadow-bg-color:hsl(6, 70%, 34%);
+    --main-font:hsl(180,100%,100%);
+    --nums-font:hsl(222, 26%, 31%);
+    --radius:10px;
+    --text-transform:uppercase;
+}
+body {
+    font-family: 'League Spartan', sans-serif;
+    color:var(--main-font);
+}
+/**************************     End  Globals        ***************************/
+/************************** Start Calc app & header ***************************/
+.container {
+    background-color: var(--main-bg-color);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0px 25px;
+}
+.calc-head {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+.calc-head > h1 {
+    font-size: 32px;
+    margin: 0;
+}
+.theme {
+    flex: 1;
+    text-align: right;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+.theme > span {
+    padding-inline: 20px;
+    text-transform: var(--text-transform);
+    font-size: 14px;
+    align-self: end;
+    margin-bottom: 5px;
+}
+.toggle {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.nums {
+    display: flex;
+ }
+.nums > span { 
+    display: block;
+    padding: 0px 8px 5px;
+}
+.theme-toggle {
+    display: flex;
+    border-radius: 20px;
+    background-color: var(--keybad-bg-color);
+    cursor: pointer;
+    width: 100px;
+}
+.theme-toggle .theme-option  {
+    position: relative;
+    margin: 7px;
+}
+.theme-toggle .theme-option > input[type="radio"] {
+    appearance: none;
+}
+.theme-toggle .theme-option label {
+    position: relative;
+    padding: 5px 8px;
+    opacity: 0;
+}
+.theme-toggle .theme-option label.active {
+    opacity: 1;
+}
+.theme-toggle .theme-option label::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top:50%;
+    transform:translateY(-50%);
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+     cursor: pointer;
+    margin-inline: 5px;
+    background-color: var(--red-key-bg-color);
+}
+.theme-toggle .theme-option label:hover::before{
+    background-color: var(--red-key-hover-color);
+} 
+/************************** End Calc app & header ***************************/
+
+/*************************** Start calc screen ***************************/
+.calc-screen {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 20px;
+    width: 100%;
+    height: 75px;
+    margin-top: 30px;
+    font-size: 26px;
+    background-color: var(--screen-bg-color);
+    border-radius: var(--radius);
+}
+/*************************** End calc screen ***************************/
+
+/*************************** Start calc keybad *************************/
+.calc-keybad {
+    margin-top: 20px;
+    width: 100%;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(4,minmax(60px,1fr));
+    grid-template-rows: repeat(5,minmax(60px,1fr));
+    gap: 15px;
+    background-color: var(--keybad-bg-color);
+    border-radius: var(--radius);
+}
+.digit {
+    height: 55px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    background-color: var(--num-bg-color);
+    color: var(--nums-font);
+    box-shadow: 0px 5px var(--num-shadow-bg-color);
+    font-size: 24px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+}
+.digit:hover {
+    background-color: var(--num-hover-color);
+}
+.digit:nth-child(4),
+.digit:nth-child(17) {
+    background-color: var(--key-bg-color);
+    color: var(--key-color);
+    font-size: 18px;
+    text-transform: var(--text-transform);
+    box-shadow: 0px 5px var(--key-shadow-bg-color)
+}
+.digit:nth-child(4):hover,
+.digit:nth-child(17):hover{
+    background-color:var(--key-hover-color);
+}
+.digit:last-child {
+    background-color: var(--red-key-bg-color);
+    color: var(--num-hover-color);
+    box-shadow: 0px 5px var(--red-key-shadow-bg-color);
+}
+.digit:not(:last-child){
+    
+}
+.digit:last-child:hover {
+    background-color: var(--red-key-hover-color);
+}
+.digit:nth-child(17) ,
+.digit:last-child {
+    grid-column: span 2;
+}
+/*************************** End calc keybad *************************/

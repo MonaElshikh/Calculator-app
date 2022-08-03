@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Calculater App" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/main.css" />
+    <link
+      rel="preload"
+      as="style"
+      href="css/media.css"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="images/favicon-32x32.png"
+    />
+    <title>Calculater App | Mona Elshikh</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="calc-app" role="main">
+        <div class="calc-head">
+          <h1>calc</h1>
+          <div class="theme">
+            <span>Theme</span>
+            <div class="toggle">
+              <div class="nums"><span>1</span><span>2</span><span>3</span></div>
+              <div class="theme-toggle">
+                <div class="theme-option">
+                  <input type="radio" name="theme" id="theme-one" />
+                  <label for="theme-one" class="active"></label>
+                </div>
+                <div class="theme-option">
+                  <input type="radio" name="theme" id="theme-two" />
+                  <label for="theme-two"></label>
+                </div>
+                <div class="theme-option">
+                  <input type="radio" name="theme" id="theme-three" />
+                  <label for="theme-three"></label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="calc-screen"></div>
+        <div class="calc-keybad">
+          <button class="digit">7</button>
+          <button class="digit">8</button>
+          <button class="digit">9</button>
+          <button class="digit">del</button>
+          <button class="digit">4</button>
+          <button class="digit">5</button>
+          <button class="digit">6</button>
+          <button class="digit">+</button>
+          <button class="digit">1</button>
+          <button class="digit">2</button>
+          <button class="digit">3</button>
+          <button class="digit">-</button>
+          <button class="digit">.</button>
+          <button class="digit">0</button>
+          <button class="digit">/</button>
+          <button class="digit">x</button>
+          <button class="digit">reset</button>
+          <button class="digit">=</button>
+        </div>
+      </div>
+    </div>
+    <script src="js/main.js"></script>
+  </body>
+</html>
