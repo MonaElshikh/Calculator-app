@@ -7,7 +7,10 @@ const calcScreen = document.querySelector(".calc-screen");
 const resultBtn = document.querySelector(".digit:last-child");
 const operatorsKeys = ["+", "-", "/", "x"];
 const zeroDigit = ["0", "."]
-let inputValue = 0;
+let formulaValue = "";
+let inputValue = "";
+let lastChar = "";
+let values = [];
 const themes =
     [
         {
@@ -67,11 +70,9 @@ const themes =
             }
         }];
 //#endregion
-
 //#region  Functions
-
 //#region Design Functions
-// function to load prefered theme
+// function to load default status 
 function loadDefaults() {
     let preferedTheme = JSON.parse(localStorage.getItem("prefers-color-scheme"));
     if (preferedTheme) {
@@ -124,55 +125,138 @@ function toggleThemes() {
     });
 }
 //#endregion
-
 // *****************************************************//
-
 //#region Functionality Functions
-// function to calculate numbers
-function calculate() {
+// function to delete last char from inputvalue.
+function dellInputValues(value) {
+    console.log(value);
+    inputValue = value.substring(0, value.length - 1);
+    calcScreen.innerHTML = inputValue.length > 0 ? inputValue : "0";
+}
+// function to clear all input values.
+function clearInputValues() {
+    inputValue = "";
+    formulaValue = "";
+    values = [];
+    calcScreen.innerHTML = "0";
+    resultBtn.classList.remove("disabled");
+}
+// function to check Input Values 
+function checkInputValues() {
     numbers.forEach((num) => {
         num.addEventListener("click", () => {
             // case reset
             if (num.innerHTML.toLowerCase() == "reset") {
-                inputValue = 0
-            }
-            // case user clicks 0 or . or any operator key while no input value , return false.
-            else if ((operatorsKeys.indexOf(num.innerHTML) !== -1 || zeroDigit.indexOf(num.innerHTML) !== -1) && inputValue == 0) {
+                clearInputValues();
                 return false;
             }
             // case del button
             else if (num.innerHTML.toLowerCase() === "del") {
-                if (inputValue != 0) {
-                    inputValue = inputValue.toString().slice(0, -1) | 0;
-                }
+                dellInputValues(inputValue);
             }
-            // case number
+            // case user clicks any operator key and  no input value >  return false.
+            else if (operatorsKeys.indexOf(num.innerHTML) != -1 && inputValue.length == 0) {
+                return false;
+            }
             else {
-                inputValue === 0 ?
-                    inputValue = num.innerHTML
-                    : inputValue += operatorsKeys.indexOf(num.innerHTML) === -1
-                        ? num.innerHTML : " " + num.innerHTML + " ";
+                //if input value more than 20 char return false.
+                if (inputValue.toString().length == 20) {
+                    return false;
+                }
+                // after user clicks result button if he/she clicks any operator will compelete the calculation 
+                // else will erase the input value
+                if (resultBtn.classList.contains("disabled")) {
+                    resultBtn.classList.remove("disabled");
+                    if (operatorsKeys.indexOf(num.innerHTML) == -1) {
+                        inputValue = "";
+                        calcScreen.innerHTML = inputValue;
+                    } else {
+                        values.push(inputValue.toString());
+                    }
+                }
+                if (inputValue.length > 0) {
+                    lastChar = inputValue.substring(inputValue.length - 1);
+                    // if last cahr is an operator and clicked button is an operator return false.
+                    if ((operatorsKeys.indexOf(lastChar) !== -1 && operatorsKeys.indexOf(num.innerHTML) !== -1) ||
+                        (zeroDigit[1] == lastChar && num.innerHTML == zeroDigit[1])) {
+                        return false;
+                    }
+                    // if clicked button is an operator and last char is . , remove last char
+                    if (operatorsKeys.indexOf(num.innerHTML) !== -1 && lastChar == zeroDigit[1]) {
+                        dellInputValues(inputValue);
+                        return false;
+                    }
+                }
+                // if num is clicked store it
+                if (operatorsKeys.indexOf(num.innerHTML) == -1) {
+                    formulaValue += num.innerHTML;
+                }
+                // if operator is clicked add the formulavalue and the operator to values array
+                if (operatorsKeys.indexOf(num.innerHTML) !== -1) {
+                    formulaValue ? values.push(formulaValue) : "";
+                    values.push(num.innerHTML == "x" ? "*" : num.innerHTML);
+                    formulaValue = "";
+                }
+                inputValue += num.innerHTML;
+                calcScreen.innerHTML = inputValue;
             }
-            calcScreen.innerHTML = inputValue;
         });
     });
 }
-// function to show calculate result.
-function showResult() {
-    calcScreen.innerHTML = inputValue;
+// function to calculate Input Values the input values
+function calculateInputValues(values) {
+    console.log(values);
+    // if the last item in values array is an operator , remove it.
+    if (operatorsKeys.indexOf(values[values.length - 1]) !== -1) {
+        values.pop();
+    }
+    // if the input values is 3 (at least one operation)
+    while (values.length > 1) {
+        let result = "";
+        for (let j = 0; j < 3; j++) {
+            result += values[j];
+        }
+        result = eval(result);
+        console.log(result);
+        values.splice(0, 3);
+        values.unshift(result.toString());
+        console.log("values after adding the calc result", values);
+    }
+    return values[0].toString();
+    // console.log("valuse after finishing calc", values);
+}
+// function to show calculation result.
+function showCalculationResult() {
     resultBtn.addEventListener("click", () => {
-        let result = eval(inputValue.replace("x", "*"));
-        calcScreen.innerHTML = result;
-        inputValue = 0;
+        if (inputValue.length == 0) {
+            return false;
+        }
+        // disable result button after click to prevent user from clicking many times.
+        resultBtn.classList.add("disabled");
+        // if the input valus is . remove it .
+        inputValue === "." ? inputValue = "0" : inputValue = inputValue;
+        // if last cahr is an operator remove it.
+        if (operatorsKeys.indexOf(inputValue.substring(inputValue.length - 1)) !== -1) {
+            inputValue = inputValue.substring(0, inputValue.length - 1);
+        }
+        // add last formulavalue to values array
+        if (formulaValue) {
+            values.push(formulaValue);
+            formulaValue = "";
+        }
+        if (values.length >= 3) {
+            inputValue = calculateInputValues(values);
+        }
+        values.length = 0;
+        calcScreen.innerHTML = inputValue;
     });
 }
 //#endregion
-
 //#endregion
 
 //#region Calls
 loadDefaults();
 toggleThemes();
-calculate();
-showResult();
-    //#endregion
+checkInputValues();
+showCalculationResult();
+//#endregion

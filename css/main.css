@@ -177,8 +177,14 @@ body {
     color: var(--num-hover-color);
     box-shadow: 0px 5px var(--red-key-shadow-bg-color);
 }
-.digit:not(:last-child){
-    
+.digit:last-child.disabled {
+    background-color: var(--red-key-hover-color);
+    opacity: .2;
+    pointer-events: none;
+}
+.digit:last-child.enabled {
+    opacity: 1;
+    pointer-events: all;
 }
 .digit:last-child:hover {
     background-color: var(--red-key-hover-color);
