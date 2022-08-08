@@ -12,63 +12,58 @@ let inputValue = "";
 let lastChar = "";
 let values = [];
 const themes =
-    [
-        {
-            themeone:
-            {
-                "--main-font": "hsl(180,100%,100%)",
-                "--nums-font": "hsl(222, 26%, 31%)",
-                "--main-bg-color": "hsl(222, 26%, 31%)",
-                "--screen-bg-color": "hsl(224, 35%, 15%)",
-                "--keybad-bg-color": "hsl(223, 31%, 20%)",
-                "--num-bg-color": "hsl(35,29%,88%)",
-                "--num-hover-color": "hsl(100,100%,100%)",
-                "--num-shadow-bg-color": "hsl(24,15%,65%)",
-                "--key-bg-color": "hsl(225, 21%, 49%)",
-                "--key-hover-color": "hsl(244,51%,76%)",
-                "--key-shadow-bg-color": "hsl(224, 28%, 35%)",
-                "--red-key-bg-color": "hsl(6, 63%, 50%)",
-                "--red-key-hover-color": "hsl(6,93%,67%)",
-                "--red-key-shadow-bg-color": "hsl(6, 70%, 34%)"
-            }
-        },
-        {
-            themetwo:
-            {
-                "--main-font": "hsl(72,12%,16%)",
-                "--nums-font": "(72,12%,16%)",
-                "--main-bg-color": "hsl(0, 0%, 90%)",
-                "--screen-bg-color": "hsl(0, 0%, 93%)",
-                "--keybad-bg-color": "hsl(0,6%,82%)",
-                "--num-bg-color": "hsl(48,9%,89%)",
-                "--num-hover-color": "hsl(100,100%,100%)",
-                "--num-shadow-bg-color": "hsl(29,12%,62%)",
-                "--key-bg-color": "hsl(184, 40%, 38%)",
-                "--key-hover-color": "hsl(185,40%,55%)",
-                "--key-shadow-bg-color": "hsl(168,59%,25%)",
-                "--red-key-bg-color": "hsl(25, 99%, 39%)",
-                "--red-key-hover-color": "hsl(6,93%,67%)",
-                "--red-key-shadow-bg-color": "hsl(6, 70%, 34%)"
-            }
-        },
-        {
-            themethree: {
-                "--main-font": "hsl(52,97%,59%)",
-                "--nums-font": "(52,97%,59%)",
-                "--main-bg-color": "hsl(268, 74%, 9%)",
-                "--screen-bg-color": "hsl(268, 74%, 12%)",
-                "--keybad-bg-color": "hsl(268, 75%, 12%)",
-                "--num-bg-color": "hsl(269,48%,20%)",
-                "--num-hover-color": "hsl(267,54%,44%)",
-                "--num-shadow-bg-color": "hsl(286,57%,36%)",
-                "--key-bg-color": "hsl(281, 89%, 26%)",
-                "--key-hover-color": "hsl(280,56%,44%)",
-                "--key-shadow-bg-color": "hsl(286,89%,52%)",
-                "--red-key-bg-color": "hsl(176, 100%, 44%)",
-                "--red-key-hover-color": "hsl(177,100%,79%)",
-                "--red-key-shadow-bg-color": "hsl(179, 81%, 71%)"
-            }
-        }];
+{
+    themeone:
+    {
+        "--main-font": "hsl(180,100%,100%)",
+        "--nums-font": "hsl(222, 26%, 31%)",
+        "--main-bg-color": "hsl(222, 26%, 31%)",
+        "--screen-bg-color": "hsl(224, 35%, 15%)",
+        "--keybad-bg-color": "hsl(223, 31%, 20%)",
+        "--num-bg-color": "hsl(35,29%,88%)",
+        "--num-hover-color": "hsl(100,100%,100%)",
+        "--num-shadow-bg-color": "hsl(24,15%,65%)",
+        "--key-bg-color": "hsl(225, 21%, 49%)",
+        "--key-hover-color": "hsl(244,51%,76%)",
+        "--key-shadow-bg-color": "hsl(224, 28%, 35%)",
+        "--red-key-bg-color": "hsl(6, 63%, 50%)",
+        "--red-key-hover-color": "hsl(6,93%,67%)",
+        "--red-key-shadow-bg-color": "hsl(6, 70%, 34%)"
+    },
+    themetwo:
+    {
+        "--main-font": "hsl(72,12%,16%)",
+        "--nums-font": "(72,12%,16%)",
+        "--main-bg-color": "hsl(0, 0%, 90%)",
+        "--screen-bg-color": "hsl(0, 0%, 93%)",
+        "--keybad-bg-color": "hsl(0,6%,82%)",
+        "--num-bg-color": "hsl(48,9%,89%)",
+        "--num-hover-color": "hsl(100,100%,100%)",
+        "--num-shadow-bg-color": "hsl(29,12%,62%)",
+        "--key-bg-color": "hsl(184, 40%, 38%)",
+        "--key-hover-color": "hsl(185,40%,55%)",
+        "--key-shadow-bg-color": "hsl(168,59%,25%)",
+        "--red-key-bg-color": "hsl(25, 99%, 39%)",
+        "--red-key-hover-color": "hsl(6,93%,67%)",
+        "--red-key-shadow-bg-color": "hsl(6, 70%, 34%)"
+    },
+    themethree: {
+        "--main-font": "hsl(52,97%,59%)",
+        "--nums-font": "(52,97%,59%)",
+        "--main-bg-color": "hsl(268, 74%, 9%)",
+        "--screen-bg-color": "hsl(268, 74%, 12%)",
+        "--keybad-bg-color": "hsl(268, 75%, 12%)",
+        "--num-bg-color": "hsl(269,48%,20%)",
+        "--num-hover-color": "hsl(267,54%,44%)",
+        "--num-shadow-bg-color": "hsl(286,57%,36%)",
+        "--key-bg-color": "hsl(281, 89%, 26%)",
+        "--key-hover-color": "hsl(280,56%,44%)",
+        "--key-shadow-bg-color": "hsl(286,89%,52%)",
+        "--red-key-bg-color": "hsl(176, 100%, 44%)",
+        "--red-key-hover-color": "hsl(177,100%,79%)",
+        "--red-key-shadow-bg-color": "hsl(179, 81%, 71%)"
+    }
+};
 //#endregion
 //#region  Functions
 //#region Design Functions
@@ -76,11 +71,11 @@ const themes =
 function loadDefaults() {
     let preferedTheme = JSON.parse(localStorage.getItem("prefers-color-scheme"));
     if (preferedTheme) {
-        setPreferedTheme(preferedTheme.index, preferedTheme.name);
-        resetActiveStyle(themeLabels, preferedTheme.index);
+        setPreferedTheme(preferedTheme.name);
+        resetActiveStyle(themeLabels, preferedTheme.name == "themeone" ? 0 : preferedTheme.name == "themetwo" ? 1 : 2);
     }
     else {
-        setPreferedTheme(0, "themeone");
+        setPreferedTheme("themeone");
         resetActiveStyle(themeLabels, 0);
     }
 }
@@ -90,24 +85,24 @@ function resetActiveStyle(list, index) {
     list[index].classList.add("active");
 }
 // function takes theme index and name and change the app theme.
-function setPreferedTheme(index, name) {
-    rootElement.style.setProperty("--main-font", themes[index][name]["--main-font"]);
-    rootElement.style.setProperty("--nums-font", themes[index][name]["--nums-font"]);
-    rootElement.style.setProperty("--main-bg-color", themes[index][name]["--main-bg-color"]);
-    rootElement.style.setProperty("--screen-bg-color", themes[index][name]["--screen-bg-color"]);
+function setPreferedTheme(name) {
+    rootElement.style.setProperty("--main-font", themes[name]["--main-font"]);
+    rootElement.style.setProperty("--nums-font", themes[name]["--nums-font"]);
+    rootElement.style.setProperty("--main-bg-color", themes[name]["--main-bg-color"]);
+    rootElement.style.setProperty("--screen-bg-color", themes[name]["--screen-bg-color"]);
 
-    rootElement.style.setProperty("--keybad-bg-color", themes[index][name]["--keybad-bg-color"]);
-    rootElement.style.setProperty("--num-bg-color", themes[index][name]["--num-bg-color"]);
-    rootElement.style.setProperty("--num-hover-color", themes[index][name]["--num-hover-color"]);
-    rootElement.style.setProperty("--num-shadow-bg-color", themes[index][name]["--num-shadow-bg-color"]);
+    rootElement.style.setProperty("--keybad-bg-color", themes[name]["--keybad-bg-color"]);
+    rootElement.style.setProperty("--num-bg-color", themes[name]["--num-bg-color"]);
+    rootElement.style.setProperty("--num-hover-color", themes[name]["--num-hover-color"]);
+    rootElement.style.setProperty("--num-shadow-bg-color", themes[name]["--num-shadow-bg-color"]);
 
-    rootElement.style.setProperty("--key-bg-color", themes[index][name]["--key-bg-color"]);
-    rootElement.style.setProperty("--key-hover-color", themes[index][name]["--key-hover-color"]);
-    rootElement.style.setProperty("--key-shadow-bg-color", themes[index][name]["--key-shadow-bg-color"]);
-    rootElement.style.setProperty("--red-key-bg-color", themes[index][name]["--red-key-bg-color"]);
+    rootElement.style.setProperty("--key-bg-color", themes[name]["--key-bg-color"]);
+    rootElement.style.setProperty("--key-hover-color", themes[name]["--key-hover-color"]);
+    rootElement.style.setProperty("--key-shadow-bg-color", themes[name]["--key-shadow-bg-color"]);
+    rootElement.style.setProperty("--red-key-bg-color", themes[name]["--red-key-bg-color"]);
 
-    rootElement.style.setProperty("--red-key-hover-color", themes[index][name]["--red-key-hover-color"]);
-    rootElement.style.setProperty("--red-key-shadow-bg-color", themes[index][name]["--red-key-shadow-bg-color"]);
+    rootElement.style.setProperty("--red-key-hover-color", themes[name]["--red-key-hover-color"]);
+    rootElement.style.setProperty("--red-key-shadow-bg-color", themes[name]["--red-key-shadow-bg-color"]);
 }
 // function to toggle between themes
 function toggleThemes() {
@@ -115,11 +110,12 @@ function toggleThemes() {
         option.addEventListener("click", (e) => {
             if (option.checked) {
                 // reset active style and set it for current option.
+                console.log("current index: ", index);
                 resetActiveStyle(themeLabels, index);
                 // save theme to local storage
-                localStorage.setItem("prefers-color-scheme", JSON.stringify({ index: index, name: option.id.replace("-", "") }));
+                localStorage.setItem("prefers-color-scheme", JSON.stringify({ name: option.id.replace("-", "") }));
                 // set current theme
-                setPreferedTheme(index, option.id.replace("-", ""));
+                setPreferedTheme(option.id.replace("-", ""));
             }
         });
     });
@@ -128,9 +124,22 @@ function toggleThemes() {
 // *****************************************************//
 //#region Functionality Functions
 // function to delete last char from inputvalue.
-function dellInputValues(value) {
+function dellInputValues(value, lastChar) {
     console.log(value);
-    inputValue = value.substring(0, value.length - 1);
+    if (value == "Infinity") {
+        inputValue = "0";
+    }
+    else {
+        inputValue = value.substring(0, value.length - 1);
+        // if the deleted char is an operatore remove it from values array
+        if (operatorsKeys.indexOf(lastChar) !== -1) {
+            value.length > 0 ? values.pop() : "";
+        }
+        // if the deleted char is not an operator , remove it  from formulaValue 
+        else {
+            formulaValue = formulaValue.substring(0, formulaValue.length - 1);
+        }
+    }
     calcScreen.innerHTML = inputValue.length > 0 ? inputValue : "0";
 }
 // function to clear all input values.
@@ -152,7 +161,7 @@ function checkInputValues() {
             }
             // case del button
             else if (num.innerHTML.toLowerCase() === "del") {
-                dellInputValues(inputValue);
+                dellInputValues(inputValue, inputValue.substring(inputValue.length - 1));
             }
             // case user clicks any operator key and  no input value >  return false.
             else if (operatorsKeys.indexOf(num.innerHTML) != -1 && inputValue.length == 0) {
@@ -189,13 +198,19 @@ function checkInputValues() {
                 }
                 // if num is clicked store it
                 if (operatorsKeys.indexOf(num.innerHTML) == -1) {
+                    // if formula value has a digit an duser try to input other didgit , return false
+                    if (formulaValue.indexOf(zeroDigit[1]) !== -1 && num.innerHTML == zeroDigit[1]) {
+                        return false;
+                    }
                     formulaValue += num.innerHTML;
+                    console.log("formulaValue", formulaValue);
                 }
                 // if operator is clicked add the formulavalue and the operator to values array
                 if (operatorsKeys.indexOf(num.innerHTML) !== -1) {
                     formulaValue ? values.push(formulaValue) : "";
                     values.push(num.innerHTML == "x" ? "*" : num.innerHTML);
                     formulaValue = "";
+                    console.log("formula values ", values);
                 }
                 inputValue += num.innerHTML;
                 calcScreen.innerHTML = inputValue;
@@ -253,7 +268,6 @@ function showCalculationResult() {
 }
 //#endregion
 //#endregion
-
 //#region Calls
 loadDefaults();
 toggleThemes();
