@@ -110,7 +110,6 @@ function toggleThemes() {
         option.addEventListener("click", (e) => {
             if (option.checked) {
                 // reset active style and set it for current option.
-                console.log("current index: ", index);
                 resetActiveStyle(themeLabels, index);
                 // save theme to local storage
                 localStorage.setItem("prefers-color-scheme", JSON.stringify({ name: option.id.replace("-", "") }));
@@ -125,7 +124,6 @@ function toggleThemes() {
 //#region Functionality Functions
 // function to delete last char from inputvalue.
 function dellInputValues(value, lastChar) {
-    console.log(value);
     if (value == "Infinity") {
         inputValue = "0";
     }
@@ -210,7 +208,6 @@ function checkInputValues() {
                     formulaValue ? values.push(formulaValue) : "";
                     values.push(num.innerHTML == "x" ? "*" : num.innerHTML);
                     formulaValue = "";
-                    console.log("formula values ", values);
                 }
                 inputValue += num.innerHTML;
                 calcScreen.innerHTML = inputValue;
@@ -220,7 +217,6 @@ function checkInputValues() {
 }
 // function to calculate Input Values the input values
 function calculateInputValues(values) {
-    console.log(values);
     // if the last item in values array is an operator , remove it.
     if (operatorsKeys.indexOf(values[values.length - 1]) !== -1) {
         values.pop();
@@ -232,10 +228,8 @@ function calculateInputValues(values) {
             result += values[j];
         }
         result = eval(result);
-        console.log(result);
         values.splice(0, 3);
         values.unshift(result.toString());
-        console.log("values after adding the calc result", values);
     }
     return values[0].toString();
     // console.log("valuse after finishing calc", values);
